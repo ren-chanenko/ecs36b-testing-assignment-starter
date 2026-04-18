@@ -32,6 +32,10 @@ void parse_args(int argc, char** argv, int** ar_out, int* len_out){
 
   *len_out = argc - 1;
 
+  if (argc <= 1) {
+    *ar_out = NULL;
+    return;
+  }
   *ar_out = (int*)malloc(*len_out * sizeof(int));
   for(int i = 0; i < *len_out; ++i){
     sscanf(argv[i + 1], "%d", &(*ar_out)[i]);

@@ -142,5 +142,4 @@ to the result of min_index_of_array function, in order to account the change in 
     int min_index = min_index_of_array((ar + i), (len - i)) + i;
     swap(ar + i, ar + min_index);
   }
-}
 ```
