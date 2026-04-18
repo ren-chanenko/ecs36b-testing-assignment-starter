@@ -23,6 +23,26 @@ TEST(ParseArgsTests, SimpleCheckArgumentsParsedSuccessfully) {
      * (ar_out and len_out are set to the right values).
      * Don't forget to free any memory that was dynamically allocated as part of your test.'
      */
+    char* arguments[] = {"cd", "3", "4", "5"};
+    char** p_argv = arguments;
+
+    int argc = sizeof(arguments) / sizeof(char*);
+
+    int* ar_out = NULL;
+    int** p_ar_out = &ar_out;
+
+    //int* len_out = (int*) malloc ((argc - 1) * sizeof(int));
+    int len_out;
+    int* p_len_out = &len_out;
+
+    parse_args(argc, p_argv, p_ar_out, p_len_out);
+
+    EXPECT_EQ(len_out, 3);
+    EXPECT_EQ(ar_out[0], 3);
+    EXPECT_EQ(ar_out[1], 4);
+    EXPECT_EQ(ar_out[2], 5);
+
+    free(ar_out);
 }
 
 TEST(ParseArgsTests, SimpleCheckParseNoArgs) {
